@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">stonks-user</string>
+    <string name="title_activity_main">stonks-user</string>
+    <string name="package_name">io.stoks.techlapse</string>
+    <string name="custom_url_scheme">io.stoks.techlapse</string>
+</resources>

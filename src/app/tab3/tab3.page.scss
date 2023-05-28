@@ -1,0 +1,31 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@100;300&display=swap');
+ion-toolbar{
+  --background: url(../../assets/bg.jpeg)  no-repeat 100% center/cover;
+}
+
+ion-content{
+  font-family: 'Lato';
+  font-style: normal;
+
+}
+
+.title{
+  font-family: 'Lato';
+font-style: normal;
+font-weight: 700;
+font-size: 12px;
+line-height: 19px;
+text-align: center;
+
+color: #C4C4C4;
+}
+
+.label{
+    font-family: 'Lato';
+font-style: normal;
+font-weight: 700;
+font-size: 16px;
+line-height: 19px;
+
+color: #000000;
+}

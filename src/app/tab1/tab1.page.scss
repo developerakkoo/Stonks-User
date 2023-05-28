@@ -1,0 +1,126 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@100;300;700&display=swap');
+ion-toolbar{
+  --background: url(../../assets/bg.jpeg)  no-repeat 100% center/cover;
+}
+
+ion-content{
+  font-family: 'Lato';
+  font-style: normal;
+
+}
+
+.title{
+  font-family: 'Lato';
+font-style: normal;
+font-weight: 700;
+font-size: 16px;
+line-height: 19px;
+text-align: center;
+
+color: #C4C4C4;
+}
+
+.item-stock {
+  margin-top: 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid rgb(31, 31, 31);
+  }
+  
+  .item-stock .stock-name {
+    font-weight: 700;
+     font-size: 16px;
+  font-family: 'Lato';
+    font-style: normal;
+     
+  }
+  
+  .item-stock .stock-exchange {
+    color: #999;
+    font-size: 15px;
+  font-family: 'Lato';
+    font-weight: 700;
+    font-style: normal;
+
+  }
+  
+  .item-stock .stock-price {
+    font-family: 'Lato';
+font-style: normal;
+font-weight: 800;
+font-size: 32px;
+line-height: 38px;
+
+color: #03C988;
+  }
+
+  .item-stock .stock-price.loss {
+    font-family: 'Lato';
+font-style: normal;
+font-weight: 800;
+font-size: 32px;
+line-height: 38px;
+
+color: #ED2B2A;
+  }
+
+
+  .item-stock .stock-price.warning {
+    font-family: 'Lato';
+font-style: normal;
+font-weight: 800;
+font-size: 32px;
+line-height: 38px;
+
+color: #ed882a;
+  }
+  
+  .item-stock .profit-loss {
+    font-size: 14px;
+  
+    border-radius: 4px;
+  }
+  
+  .item-stock .profit-loss.profit {
+    height: 38px;
+    width: 79px;
+    border-radius: 10px;
+    color: #ffffff;
+    text-align: center;
+    font-size: 16px;
+    font-weight: 700;
+    font-style: normal;
+    font-family: 'Lato';
+    line-height: 19px;
+    background-color: #03C988;
+  }
+  
+  .item-stock .profit-loss.loss {
+    height: 38px;
+    width: 79px;
+    border-radius: 10px;
+    color: #ffffff;
+    text-align: center;
+    font-size: 16px;
+    font-weight: 700;
+    font-style: normal;
+    font-family: 'Lato';
+    line-height: 19px;
+    background-color: #ED2B2A;
+  }
+
+  .item-stock .profit-loss.warning {
+    height: 38px;
+    width: 79px;
+    border-radius: 10px;
+    color: #ffffff;
+    text-align: center;
+    font-size: 16px;
+    font-weight: 700;
+    font-style: normal;
+    font-family: 'Lato';
+    line-height: 19px;
+    background-color: #ed882a;
+  }
+  

@@ -1,0 +1,28 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@100;300;700&display=swap');
+ion-toolbar{
+  --background: url(../../assets/bg.jpeg)  no-repeat 100% center/cover;
+  color: #C4C4C4;
+
+}
+
+ion-content{
+  font-family: 'Lato';
+  font-style: normal;
+
+}
+
+.title{
+  font-family: 'Lato';
+font-style: normal;
+font-weight: 700;
+font-size: 16px;
+line-height: 19px;
+
+color: #C4C4C4;
+}
+ion-card{
+ 
+  --background: url(../../assets/bg.jpeg)  no-repeat 100% center/cover;
+   height: 161px;
+   border-radius: 40px;
+}

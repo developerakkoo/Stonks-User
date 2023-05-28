@@ -1,7 +1,7 @@
 import { CapacitorConfig } from '@capacitor/cli';
 
 const config: CapacitorConfig = {
-  appId: 'io.ionic.starter',
+  appId: 'io.stoks.techlapse',
   appName: 'stonks-user',
   webDir: 'www',
   bundledWebRuntime: false

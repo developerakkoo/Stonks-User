@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-
+import Chart from 'chart.js/auto';
 @Component({
   selector: 'app-tab2',
   templateUrl: 'tab2.page.html',
