@@ -14,16 +14,16 @@
         <ion-text color="dark" class="ion-text-center">
           <h5>Select a plan and step into the NIFTY INDEX trading</h5>
         </ion-text>
-        <ion-card>
+        <ion-card *ngFor="let item of plans">
           <ion-card-header>
-            <ion-card-subtitle color="medium">299.0 INR/Month</ion-card-subtitle>
-            <ion-card-title color="light">PREMIUM</ion-card-title>
+            <ion-card-subtitle color="medium">{{item.price}} INR/Month</ion-card-subtitle>
+            <ion-card-title color="light">{{item.name}}</ion-card-title>
           </ion-card-header>
           <ion-card-content>
             <ion-text color="light" class="ion-text-center">
-              <h4>For those who want daily calls, It includes 20+ calls</h4>
+              <h4>{{item.description}}</h4>
             </ion-text>
-            <ion-button  expand="block" fill="clear" shape="round" color="warning">
+            <ion-button  expand="block" fill="clear" shape="round" color="warning" (click)="pay(item.price)">
               BUY NOW
             </ion-button>
           </ion-card-content>

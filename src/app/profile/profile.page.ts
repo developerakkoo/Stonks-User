@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DataService } from '../services/data.service';
 
 @Component({
   selector: 'app-profile',
@@ -7,9 +8,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProfilePage implements OnInit {
 
-  constructor() { }
+  name!:string;
+  email!:string;
+  photo!:string;
+  constructor(private data: DataService) { }
 
-  ngOnInit() {
+  async ngOnInit() {
+    this.name = await this.data.get("name");
+    this.email = await this.data.get("email");
+    this.photo = await this.data.get("photo");
   }
 
 }

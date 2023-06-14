@@ -3,30 +3,48 @@
               align-items: center;
               width: 100%;
               z-index: 10;
-              height: auto;" 
+              height: 400px;" 
               src="assets/logo.png" alt="" srcset="">
 
 
   <p class="para1">Specially designed for NIFTY Index</p>
   <p class="para2">FUTURES and OPTIONS intraday traders</p>
 
-  <div class="container">
-    <ion-button (click)="loginWithGoogle()" expand="block" shape="round" color="danger">
-      <ion-icon slot="end" name="add" color="light"></ion-icon>
-      LOGIN With GOOGLE
-    </ion-button>
 
-    <!-- <ion-button (click)="onClick()">
-      <ion-icon slot="start" name="add"></ion-icon>
-      Click me
-    </ion-button> -->
-  </div>
+    <form [formGroup]="loginForm" (ngSubmit)="loginWithGoogle()" style="padding: 20px;">
+        <ion-input style="margin-bottom: 10px;" placeholder="Enter email" label="Email" label-placement="floating" fill="outline" required formControlName="email" type="text"></ion-input>
+        <ion-input  required  placeholder="Enter password" label="Password" label-placement="floating" fill="outline" formControlName="password" type="text"></ion-input>
+      <ion-button style="margin-top: 10px;" #loginBtn class="ion-margin-top" expand="full" color="primary" type="submit" >
+        Login
+        <ion-spinner *ngIf="isLoading" class="ion-margin-start" name="circular"></ion-spinner>
+
+      </ion-button>
+      <ion-text color="medium" class="ion-text-right">
+        <p style="font-family: 'Lato';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 16px;
+        width: 100%;
+        margin-top: 5px;
+ 
+        color: #bfbfbf;">Forgot Password?</p>
+      </ion-text>
+    </form>
+  
   <ion-text  class="ion-text-center">
-    <p class="text">By login you agree to our <strong>terms and conditions.</strong></p>
+    <h6 class="text">By login you agree to our <strong>terms and conditions.</strong></h6>
   </ion-text>
  
     
  
 </ion-content>
+
+<ion-footer>
+  <ion-toolbar lines="none" (click)="goToRegister()">
+   <ion-text class="ion-text-center" color="medium">
+    <h6>Not a user? Register here</h6>
+   </ion-text>
+  </ion-toolbar>
+</ion-footer>
 
 

@@ -12,112 +12,22 @@
     <canvas  id="MyChart" >{{ chart }}</canvas>
 </div>
 
-<ion-segment value="call" (ionChange)="segmentChanged($event)">
-  <ion-segment-button value="call">
-    <ion-label>Call</ion-label>
-  </ion-segment-button>
-  <ion-segment-button value="put">
-    <ion-label>Put</ion-label>
-  </ion-segment-button>
-</ion-segment>
-<ion-list *ngIf="isCallActive">
-  <ion-list-header *ngIf="isCallActive">
-    <ion-label>Previous Calls</ion-label>
-  </ion-list-header>
-  <ion-list-header *ngIf="isPutActive">
-    <ion-label>Previous Puts</ion-label>
+
+<ion-list>
+  <ion-list-header>
+    <ion-label>Last 10 Calls Backtested Results</ion-label>
   </ion-list-header>
 
-  <ion-item color="success" >
-    <ion-label>
-      <p>Date: 23/08/2022</p>
-      <p>Target: 250 points</p>
-      <p>Stop Loss: 150 points</p>
-    </ion-label>
-  </ion-item>
-  <ion-item color="success">
-    <ion-label>
-      <p>Date: 23/08/2022</p>
-      <p>Target: 250 points</p>
-      <p>Stop Loss: 150 points</p>
-    </ion-label>
-  </ion-item>
-  <ion-item color="success">
-    <ion-label>
-      <p>Date: 23/08/2022</p>
-      <p>Target: 250 points</p>
-      <p>Stop Loss: 150 points</p>
-    </ion-label>
-  </ion-item><ion-item color="success">
-    <ion-label>
-      <p>Date: 23/08/2022</p>
-      <p>Target: 250 points</p>
-      <p>Stop Loss: 150 points</p>
-    </ion-label>
-  </ion-item><ion-item color="success">
-    <ion-label>
-      <p>Date: 23/08/2022</p>
-      <p>Target: 250 points</p>
-      <p>Stop Loss: 150 points</p>
-    </ion-label>
-  </ion-item><ion-item color="success">
-    <ion-label>
-      <p>Date: 23/08/2022</p>
-      <p>Target: 250 points</p>
-      <p>Stop Loss: 150 points</p>
-    </ion-label>
-  </ion-item>
 
-
+  <ion-item [color]="item.isCall ?  'success' : 'danger'" *ngFor="let item of data">
+    <ion-label>
+      <p>Date: {{item.createdAt | date}}</p>
+      <p>Target: {{item.targetPrice}} points</p>
+      <p>Stop Loss: {{item.stopLoss}} points</p>
+    </ion-label>
+  </ion-item>
+  
   
 </ion-list>
 
-<ion-list *ngIf="isPutActive">
-  <ion-list-header *ngIf="isCallActive">
-    <ion-label>Previous Calls</ion-label>
-  </ion-list-header>
-  <ion-list-header *ngIf="isPutActive">
-    <ion-label>Previous Puts</ion-label>
-  </ion-list-header>
-
-  <ion-item color="danger" >
-    <ion-label>
-      <p>Date: 23/08/2022</p>
-      <p>Target: 250 points</p>
-      <p>Stop Loss: 150 points</p>
-    </ion-label>
-  </ion-item>
-  <ion-item color="danger">
-    <ion-label>
-      <p>Date: 23/08/2022</p>
-      <p>Target: 250 points</p>
-      <p>Stop Loss: 150 points</p>
-    </ion-label>
-  </ion-item>
-  <ion-item color="danger">
-    <ion-label>
-      <p>Date: 23/08/2022</p>
-      <p>Target: 250 points</p>
-      <p>Stop Loss: 150 points</p>
-    </ion-label>
-  </ion-item><ion-item color="danger">
-    <ion-label>
-      <p>Date: 23/08/2022</p>
-      <p>Target: 250 points</p>
-      <p>Stop Loss: 150 points</p>
-    </ion-label>
-  </ion-item><ion-item color="danger">
-    <ion-label>
-      <p>Date: 23/08/2022</p>
-      <p>Target: 250 points</p>
-      <p>Stop Loss: 150 points</p>
-    </ion-label>
-  </ion-item><ion-item color="danger">
-    <ion-label>
-      <p>Date: 23/08/2022</p>
-      <p>Target: 250 points</p>
-      <p>Stop Loss: 150 points</p>
-    </ion-label>
-  </ion-item>
-</ion-list>
 </ion-content>

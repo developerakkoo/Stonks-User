@@ -11,7 +11,7 @@
   <ion-grid class="ion-margin-start">
     <ion-row>
       <ion-col size="12">
-        <div class="capsule">
+        <div class="capsule animate__animated animate__slideInLeft" #nifty50div>
           <p style="
           font-family: 'Lato';
           font-style: normal;
@@ -36,7 +36,7 @@
           line-height: 38px;
           text-align: center;
           
-          color: #FFFFFF;">18,000</h4>
+          color: #FFFFFF;">{{nifty50Price}}</h4>
           <div class="circle">
             <ion-avatar style="padding: 10px;">
               <img src="/assets/stocks.png" />
@@ -46,7 +46,7 @@
     
     
     
-        <div class="capsule buy">
+        <div [class]="isCall ? 'capsule buy animate__animated animate__slideInRight' : 'capsule sell animate__animated animate__slideInRight'">
           <p style="
           font-family: 'Lato';
           font-style: normal;
@@ -56,7 +56,7 @@
          
           
           color: #FFFFFF;
-          ">BUY NOW</p>
+          ">{{isCall ? 'BUY NOW' : 'SELL NOW'}}</p>
           <br>
           <h4 style="position: absolute;
           width: 119px;
@@ -66,12 +66,12 @@
           
           font-family: 'Lato';
           font-style: normal;
-          font-weight: 700;
-          font-size: 32px;
+          font-weight: 300;
+          font-size: 22px;
           line-height: 38px;
           text-align: center;
           
-          color: #FFFFFF;">18,000</h4>
+          color: #FFFFFF;">{{isCall ? call : put}}</h4>
           <div class="circle">
             <ion-avatar style="padding: 10px;">
               <img src="/assets/buy.png" />
@@ -79,7 +79,7 @@
           </div>
         </div>
     
-        <div class="capsule buy">
+        <div [class]="isCall ? 'capsule buy animate__animated animate__slideInLeft' : 'capsule sell animate__animated animate__slideInLeft'">
           <p style="
           font-family: 'Lato';
           font-style: normal;
@@ -104,7 +104,7 @@
           line-height: 38px;
           text-align: center;
           
-          color: #FFFFFF;">18,000</h4>
+          color: #FFFFFF;"> {{target}} </h4>
           <div class="circle">
             <ion-avatar style="padding: 10px;">
               <img src="/assets/candlestick.png" />
@@ -113,7 +113,7 @@
         </div>
     
     
-        <div class="capsule buy">
+        <div [class]="isCall ? 'capsule buy animate__animated animate__slideInRight' : 'capsule sell animate__animated animate__slideInRight'">
           <p style="
           font-family: 'Lato';
           font-style: normal;
@@ -138,7 +138,7 @@
           line-height: 38px;
           text-align: center;
           
-          color: #FFFFFF;">18,000</h4>
+          color: #FFFFFF;">{{stoploss}}</h4>
           <div class="circle">
             <ion-avatar style="padding: 10px;">
               <img src="/assets/sell.png" />

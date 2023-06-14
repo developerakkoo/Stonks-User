@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "stonks-b66d4": {
+      "hosting": {
+        "app": [
+          "stonks-b66d4"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "stonks-b66d4"
+  }
+}

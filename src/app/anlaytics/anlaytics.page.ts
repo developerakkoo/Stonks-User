@@ -1,5 +1,8 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { LoadingController } from '@ionic/angular';
 import Chart from 'chart.js/auto';
+import { environment } from 'src/environments/environment';
 @Component({
   selector: 'app-anlaytics',
   templateUrl: './anlaytics.page.html',
@@ -10,12 +13,22 @@ export class AnlayticsPage implements OnInit {
 
   isCallActive:boolean = true;
   isPutActive:boolean = false;
-  constructor() { }
+
+  data:any[] = [];
+
+  constructor(private http: HttpClient,
+              private loadingController: LoadingController,
+              ) { }
 
   ngOnInit() {
     this.createChart();
   }
 
+  ionViewDidEnter(){
+    this.getData();
+    this.getchartDate();
+
+  }
 
   createChart(){
   
@@ -28,14 +41,14 @@ export class AnlayticsPage implements OnInit {
 	       datasets: [
           {
             label: "Profit",
-            data: ['467','576', '572', '79', '92',
-								 '574', '573', '576'],
+            data: ['167','176', '72', '79', '92',
+								 '24', '23', '26'],
             backgroundColor: 'limegreen'
           },
           {
             label: "Loss",
-            data: ['542', '542', '536', '327', '17',
-									 '0.00', '538', '541'],
+            data: ['142', '42', '56', '27', '17',
+									 '10', '38', '11'],
             backgroundColor: 'red'
           }  
         ]
@@ -46,18 +59,42 @@ export class AnlayticsPage implements OnInit {
       
     });
   }
+  async presentLoading() {
+    const loading = await this.loadingController.create({
+      message: 'Loading...',
+    });
+    await loading.present();
+  }
 
-  segmentChanged(ev:any){
-    console.log(ev);
-    if(ev.detail.value == "call"){
-      this.isCallActive = true;
-      this.isPutActive = false;
-    }
+  getchartDate(){
+    this.http.get(environment.API +'getChart/data')
+    .subscribe({
+      next:(value:any) =>{
+        console.log(value);
+        
+      },
+      error:(error:any) =>{
+        console.log(error);
+        
+      }
+    })
+  }
+  getData(){
+    this.presentLoading();
+    this.http.get(environment.API +'App/api/v1/getData')
+    .subscribe({
+      next:(value:any) =>{
+        console.log(value);
+        this.data = value['calls'];
+        this.loadingController.dismiss();
 
-    if(ev.detail.value == "put"){
-      this.isCallActive = false;
-      this.isPutActive = true;
-    }
-    
+        
+      },
+      error:(error:any) =>{
+        console.log(error);
+        this.loadingController.dismiss();
+        
+      }
+    })
   }
 }

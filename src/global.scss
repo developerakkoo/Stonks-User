@@ -24,3 +24,17 @@
 @import "@ionic/angular/css/text-alignment.css";
 @import "@ionic/angular/css/text-transformation.css";
 @import "@ionic/angular/css/flex-utils.css";
+ion-tab-button.tab-active {
+    --color-selected: #FF0000; /* Replace with your desired color */
+  }
+
+  ion-input {
+    --border-radius: 20px; /* Adjust the value to control the roundness of the border */
+    --border-width: 1px;
+    --border-color: #000000; /* Replace with your desired border color */
+    --background: transparent; /* Make the background transparent to show the outline effect */
+    --padding-start: 10px; /* Adjust the value to control the input's left padding */
+    --padding-end: 10px; /* Adjust the value to control the input's right padding */
+  }
+
+ 

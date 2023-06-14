@@ -25,6 +25,10 @@ const routes: Routes = [
   {
     path: 'notification',
     loadChildren: () => import('./notification/notification.module').then( m => m.NotificationPageModule)
+  },
+  {
+    path: 'registe',
+    loadChildren: () => import('./registe/registe.module').then( m => m.RegistePageModule)
   }
 ];
 @NgModule({
