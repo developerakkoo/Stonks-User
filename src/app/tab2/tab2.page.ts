@@ -17,6 +17,7 @@ export class Tab2Page {
 
   nifty50Price:any;
   call:any;
+  stock:any[] = [];
   put:any;
   stoploss:any;
   target:any;
@@ -34,6 +35,8 @@ export class Tab2Page {
                 this.date = moment().format("DD-MM-YYYY");
                 let url = this.router.url;
                 console.log(url);
+                console.log(this.date);
+                
                 this.socket.connect();
                 this.socket.on('get:Nifty50',(value:any) =>{
                   console.log(`Nifty Price`);
@@ -78,6 +81,7 @@ export class Tab2Page {
                   next:(value:any) =>{
                     console.log(value);
                     if(value['stocks']){
+                      this.stock = value['stock'];
                       this.call = value['stock'][0]['call'];
                       this.put = value['stock'][0]['put'];
                       this.stoploss = value['stock'][0]['stopLoss'];

@@ -15,6 +15,9 @@ export class AnlayticsPage implements OnInit {
   isPutActive:boolean = false;
 
   data:any[] = [];
+  label:any;
+  profitData:any;
+  lossData:any;
 
   constructor(private http: HttpClient,
               private loadingController: LoadingController,
@@ -36,19 +39,16 @@ export class AnlayticsPage implements OnInit {
       type: 'bar', //this denotes tha type of chart
 
       data: {// values on X-Axis
-        labels: ['2022-05-10', '2022-05-11', '2022-05-12','2022-05-13',
-								 '2022-05-14', '2022-05-15', '2022-05-16','2022-05-17', ], 
+        labels: this.label, 
 	       datasets: [
           {
             label: "Profit",
-            data: ['167','176', '72', '79', '92',
-								 '24', '23', '26'],
+            data: this.profitData,
             backgroundColor: 'limegreen'
           },
           {
             label: "Loss",
-            data: ['142', '42', '56', '27', '17',
-									 '10', '38', '11'],
+            data:this.lossData,
             backgroundColor: 'red'
           }  
         ]
@@ -62,6 +62,7 @@ export class AnlayticsPage implements OnInit {
   async presentLoading() {
     const loading = await this.loadingController.create({
       message: 'Loading...',
+      duration:6000
     });
     await loading.present();
   }
@@ -71,6 +72,9 @@ export class AnlayticsPage implements OnInit {
     .subscribe({
       next:(value:any) =>{
         console.log(value);
+        this.label = value['label'];
+        this.profitData = value['Profit']['dataSet'];
+        this.lossData = value['loss']['data'];
         
       },
       error:(error:any) =>{
@@ -85,7 +89,7 @@ export class AnlayticsPage implements OnInit {
     .subscribe({
       next:(value:any) =>{
         console.log(value);
-        this.data = value['calls'];
+        this.data = value['calls'].slice(0,9);
         this.loadingController.dismiss();
 
         

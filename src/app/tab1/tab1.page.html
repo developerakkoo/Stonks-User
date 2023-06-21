@@ -297,7 +297,7 @@
       <ion-label >
         <h2 class="stock-name">{{item.SYMBOL}}</h2>
         <div class="stock-exchange">NSE</div>
-        <div [class]="item.CHNG >= 0 ? 'stock-price profit animate__animated animate__flipInX' : 'stock-price loss animate__animated animate__flipInX'">&#8377;{{item.LTP}}</div>
+        <div [class]="item.CHNG >= 0 ? 'stock-price profit ' : 'stock-price loss'">&#8377;{{item.LTP}}</div>
       </ion-label>
       <div style="float: right; display: flex; justify-content: center; align-items: center;" [class]="item.CHNG >= 0 ?  'profit-loss profit' :'profit-loss loss'">
         <p >{{item.PcCHNG

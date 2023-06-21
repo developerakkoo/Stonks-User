@@ -22,8 +22,9 @@
   <ion-item [color]="item.isCall ?  'success' : 'danger'" *ngFor="let item of data">
     <ion-label>
       <p>Date: {{item.createdAt | date}}</p>
-      <p>Target: {{item.targetPrice}} points</p>
-      <p>Stop Loss: {{item.stopLoss}} points</p>
+      <p>Target: {{item.targetPrice}} </p>
+      <p>Entry: {{item.entryPrice}} </p>
+      <p>Stop Loss: {{item.stopLoss}} </p>
     </ion-label>
   </ion-item>
   

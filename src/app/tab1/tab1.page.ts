@@ -36,7 +36,7 @@ export class Tab1Page {
     ionViewDidEnter(){
     this.getSocketInteval =   setInterval(() =>{
         this.getAllStocks();
-      },2000);
+      },1000);
     }
 
     ionViewDidLeave(){

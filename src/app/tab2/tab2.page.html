@@ -8,7 +8,19 @@
 
 <ion-content>
   
-  <ion-grid class="ion-margin-start">
+  <ion-grid *ngIf="stock.length == 0">
+    <ion-row>
+      <ion-col size="6" offset="3">
+        <ion-text class="ion-text-center" color="primary">
+          <img src="/assets/realx.svg" alt="" srcset="">
+          <h4>Sit Back and Relax!</h4>
+          <p>We will notify you once calls are provided.</p>
+        </ion-text>
+      </ion-col>
+      <ion-col size="6"></ion-col>
+    </ion-row>
+  </ion-grid>
+  <ion-grid class="ion-margin-start" *ngIf="stock.length > 0">
     <ion-row>
       <ion-col size="12">
         <div class="capsule animate__animated animate__slideInLeft" #nifty50div>
