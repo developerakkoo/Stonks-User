@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { DataService } from './services/data.service';
+import { FcmServiceService } from './services/fcm-service.service';
 
 @Component({
   selector: 'app-root',
@@ -10,7 +11,9 @@ import { DataService } from './services/data.service';
 export class AppComponent {
   isLoggedIn!:boolean;
   constructor(private router: Router,
+    private FCM: FcmServiceService,
               private data: DataService) {
+                this.FCM.initPush();
                 this.checkUser();
               }
 
