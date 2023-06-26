@@ -9,28 +9,37 @@
 
 <ion-content>
 
+  <ion-grid>
+    <ion-row>
+      <ion-col size="6" offset="3">
+        <div >
+          <img style="
+          width: 181px;
+          height: 181px;
+          
+          top: 40px;
+          border-radius: 50%;
+          background: #D9D9D9;" [src]="photo" alt="" srcset="">
+          </div>
 
- <ion-text style="    position: absolute;
- top: 240px;
- left: 110px;" color="primary" class="ion-text-center">
-  <h3><strong>{{name || "..."}}</strong></h3>
-</ion-text>
-  <p style="position: absolute;
-  top: 270px;
-  left: 17vw;">{{email || "..."}}</p>
-<div class="container">
-  <div >
-  <img style="position: absolute;
-  width: 181px;
-  height: 181px;
-  left:25vw;
-  top: 40px;
-  border-radius: 50%;
-  background: #D9D9D9;" [src]="photo" alt="" srcset="">
-  </div>
+          <ion-text style="
+          margin-top: 140px;
+          " color="primary" class="ion-text-center">
+           <h3><strong>{{name || "..."}}</strong></h3>
+           <p style="
+           color: grey;
+           ">{{email || "..."}}</p>
+         </ion-text>
+          
+      </ion-col>
+    </ion-row>
+  </ion-grid>
   
- 
- </div>
+    
+
+
+
+
 
 
  <ion-grid class="ion-margin">

@@ -8,7 +8,7 @@
 
 <ion-content>
   
-  <ion-grid *ngIf="stock.length == 0">
+  <ion-grid *ngIf="isNoCallToday == true">
     <ion-row>
       <ion-col size="6" offset="3">
         <ion-text class="ion-text-center" color="primary">
@@ -17,10 +17,12 @@
           <p>We will notify you once calls are provided.</p>
         </ion-text>
       </ion-col>
-      <ion-col size="6"></ion-col>
     </ion-row>
   </ion-grid>
-  <ion-grid class="ion-margin-start" *ngIf="stock.length > 0">
+
+
+
+  <ion-grid class="ion-margin-start" *ngIf="isNoCallToday == false">
     <ion-row>
       <ion-col size="12">
         <div class="capsule animate__animated animate__slideInLeft" #nifty50div>
@@ -51,7 +53,7 @@
           color: #FFFFFF;">{{nifty50Price}}</h4>
           <div class="circle">
             <ion-avatar style="padding: 10px;">
-              <img src="/assets/stocks.png" />
+              <img src="/assets/trend.png" />
             </ion-avatar>
           </div>
         </div>
@@ -68,7 +70,7 @@
          
           
           color: #FFFFFF;
-          ">{{isCall ? 'BUY NOW' : 'SELL NOW'}}</p>
+          ">{{isCall ? 'CALL' : 'CALL'}}</p>
           <br>
           <h4 style="position: absolute;
           width: 119px;
@@ -83,10 +85,10 @@
           line-height: 38px;
           text-align: center;
           
-          color: #FFFFFF;">{{isCall ? call : put}}</h4>
+          color: #FFFFFF;">{{call}}</h4>
           <div class="circle">
             <ion-avatar style="padding: 10px;">
-              <img src="/assets/buy.png" />
+              <img src="/assets/bull.png" />
             </ion-avatar>
           </div>
         </div>
@@ -119,7 +121,7 @@
           color: #FFFFFF;"> {{target}} </h4>
           <div class="circle">
             <ion-avatar style="padding: 10px;">
-              <img src="/assets/candlestick.png" />
+              <img src="/assets/broker.png" />
             </ion-avatar>
           </div>
         </div>
@@ -153,7 +155,7 @@
           color: #FFFFFF;">{{stoploss}}</h4>
           <div class="circle">
             <ion-avatar style="padding: 10px;">
-              <img src="/assets/sell.png" />
+              <img src="/assets/bear.png" />
             </ion-avatar>
           </div>
         </div>

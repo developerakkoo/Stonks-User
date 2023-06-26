@@ -300,8 +300,8 @@
         <div [class]="item.CHNG >= 0 ? 'stock-price profit ' : 'stock-price loss'">&#8377;{{item.LTP}}</div>
       </ion-label>
       <div style="float: right; display: flex; justify-content: center; align-items: center;" [class]="item.CHNG >= 0 ?  'profit-loss profit' :'profit-loss loss'">
-        <p >{{item.PcCHNG
-        }}%</p>
+        <p >{{item.CHNG}} ({{item.PcCHNG
+        }}%)</p>
       </div>
     </ion-item>
 

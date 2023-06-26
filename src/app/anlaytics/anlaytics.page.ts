@@ -24,12 +24,15 @@ export class AnlayticsPage implements OnInit {
               ) { }
 
   ngOnInit() {
-    this.createChart();
+    
   }
 
   ionViewDidEnter(){
     this.getData();
     this.getchartDate();
+    setTimeout(() =>{
+      this.createChart();
+    },3000)
 
   }
 

@@ -1,9 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Lato:wght@100;300;700&display=swap');
 
-ion-toolbar {
-  --background: url(./../../assets/bg.jpeg) no-repeat 100% center/cover;
-}
+ion-toolbar{
+  --background: url(../../assets/bg.jpeg)  no-repeat 100% center/cover;
+  color: #C4C4C4;
 
+}
 ion-content {
   font-family: 'Lato';
   font-style: normal;

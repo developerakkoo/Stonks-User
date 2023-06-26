@@ -2,7 +2,7 @@ import { CapacitorConfig } from '@capacitor/cli';
 
 const config: CapacitorConfig = {
   appId: 'io.stoks.techlapse',
-  appName: 'stonks-user',
+  appName: 'Nifty Level Tracker',
   webDir: 'www',
   bundledWebRuntime: false
 };

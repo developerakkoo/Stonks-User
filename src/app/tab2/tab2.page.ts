@@ -21,9 +21,10 @@ export class Tab2Page {
   put:any;
   stoploss:any;
   target:any;
-  isCall:any;
+  isCall:boolean = false;
   date:any;
 
+  isNoCallToday!:boolean;
   nifty50inteval:any;
   constructor(private http: HttpClient,
               private data: DataService,
@@ -44,16 +45,26 @@ export class Tab2Page {
                   this.nifty50Price = value[0]['LTP'];
                   
                 })
+                this.socket.on('get:isNoCall',(value:any) =>{
+                  console.log("is no call status");
+                  
+                  console.log(value);
+                  
+                })
                 
               }
 
 
               ionViewDidEnter(){
                 console.log("Tab 2 loaded");
-               this.nifty50inteval =  setInterval(() =>{
-                  this.getCallPutData();
-                this.getNifty50Price();
-                },2000)
+                this.getNoCallStatus();
+                this.getCallPutData();
+              this.getNifty50Price();
+                // this.nifty50inteval =  setInterval(() =>{
+                //  this.getNoCallStatus();
+                //   this.getCallPutData();
+                // this.getNifty50Price();
+                // },2000)
                 
                 
                 
@@ -79,16 +90,30 @@ export class Tab2Page {
               getCallPutData(){
                 this.http.get(environment.API +'App/api/v1/getDataByDate/'+this.date).subscribe({
                   next:(value:any) =>{
-                    console.log(value);
-                    if(value['stocks']){
+                    console.log("CAlls DATA --"+value);
+                    if(value['stock']){
                       this.stock = value['stock'];
                       this.call = value['stock'][0]['call'];
-                      this.put = value['stock'][0]['put'];
                       this.stoploss = value['stock'][0]['stopLoss'];
                       this.target = value['stock'][0]['targetPrice'];
                       this.isCall = value['stock'][0]['isCall'];
                     }
                     
+                  },
+                  error:(error) =>{
+                    console.log(error);
+                    
+                  }
+                })
+              }
+
+
+              getNoCallStatus(){
+                this.http.get(environment.API +"api/get/noCall/6494098da741612bc7797121")
+                .subscribe({
+                  next:(value:any) =>{
+                    console.log(value);
+                    this.isNoCallToday = value['data']['isNoCall'];
                   },
                   error:(error) =>{
                     console.log(error);

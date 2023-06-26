@@ -17,4 +17,8 @@ export class Tab3Page {
     this.haptics.hapticsImpactLight();
     this.router.navigate([name]);
   }
+
+  onLogout(){
+    this.router.navigate([''])
+  }
 }
