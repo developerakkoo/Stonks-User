@@ -14,6 +14,13 @@ export class Tab1Page {
 
   stocks:any[] = [];
   isLoading: boolean = false;
+  nifty50Price = {
+    SYMBOL: "NIFTY 50",
+    LTP: 19378.2,
+    CHNG: -119.1,
+    PcCHNG: -0.61,
+    sign: -1
+};
 
   getSocketInteval:any;
   constructor(private router: Router,
@@ -31,12 +38,20 @@ export class Tab1Page {
         }
         
       })
+
+      this.socket.on('get:Nifty50',(value:any) =>{
+        console.log(`Nifty Price`);
+        console.log(value);
+        this.nifty50Price = value[0];
+        
+      })
     }
 
     ionViewDidEnter(){
       // this.getAllStocks();
     this.getSocketInteval =   setInterval(() =>{
         this.getAllStocks();
+        this.getNifty50Price();
       },1000);
     }
 
@@ -44,6 +59,19 @@ export class Tab1Page {
       clearInterval(this.getSocketInteval);
     }
 
+    getNifty50Price(){
+      this.http.get(environment.API +'App/api/live/index')
+      .subscribe({
+        next:(data:any) =>{
+          console.log(data);
+          
+        },
+        error:(error) =>{
+          console.log(error);
+          
+        }
+      })
+    }
     getAllStocks(){
       this.http.get(environment.API +'App/api/live/GetStocks')
       .subscribe({

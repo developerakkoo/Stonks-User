@@ -7,6 +7,10 @@
     margin-top: 40%;
 }
 
+ion-header{
+  --ion-elevation:0
+}
+
 ion-checkbox {
     --size: 22px;
     --checkbox-background-checked: #6815ec;

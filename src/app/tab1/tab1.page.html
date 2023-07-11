@@ -293,6 +293,17 @@
   <ion-list *ngIf="isLoading">
    
 
+    <ion-item class="item-stock" lines="none" >
+      <ion-label >
+        <h2 class="stock-name">NIFTY50</h2>
+        <div class="stock-exchange">NSE</div>
+        <div [class]="nifty50Price.CHNG >= 0 ? 'stock-price profit ' : 'stock-price loss'">&#8377;{{nifty50Price.LTP}}</div>
+      </ion-label>
+      <div style="float: right; display: flex; justify-content: center; align-items: center;" [class]="nifty50Price.CHNG >= 0 ?  'profit-loss profit' :'profit-loss loss'">
+        <p >{{nifty50Price.CHNG}} ({{nifty50Price.PcCHNG
+        }}%)</p>
+      </div>
+    </ion-item>
     <ion-item class="item-stock" lines="none" *ngFor="let item of stocks">
       <ion-label >
         <h2 class="stock-name">{{item.SYMBOL}}</h2>

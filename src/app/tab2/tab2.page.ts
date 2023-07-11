@@ -33,7 +33,7 @@ export class Tab2Page {
               private haptics: HapticService,
               ) {
                 console.log(moment().format("DD-MM-YYYY"));
-                this.date = moment().format("DD-MM-YYYY");
+                this.date = moment().format("MM-DD-YYYY");
                 let url = this.router.url;
                 console.log(url);
                 console.log(this.date);
@@ -56,10 +56,12 @@ export class Tab2Page {
 
 
               ionViewDidEnter(){
+                console.log(moment().format("MM-DD-YYYY"));
+                this.date = moment().format("MM-DD-YYYY");
                 console.log("Tab 2 loaded");
+                this.getNifty50Price();
                 this.getNoCallStatus();
                 this.getCallPutData();
-              this.getNifty50Price();
                 // this.nifty50inteval =  setInterval(() =>{
                 //  this.getNoCallStatus();
                 //   this.getCallPutData();
@@ -90,7 +92,8 @@ export class Tab2Page {
               getCallPutData(){
                 this.http.get(environment.API +'App/api/v1/getDataByDate/'+this.date).subscribe({
                   next:(value:any) =>{
-                    console.log("CAlls DATA --"+value);
+                    console.log("CAlls DATA --");
+                    console.log(value);
                     if(value['stock']){
                       this.stock = value['stock'];
                       this.call = value['stock'][0]['call'];
@@ -102,6 +105,12 @@ export class Tab2Page {
                   },
                   error:(error) =>{
                     console.log(error);
+                    console.log(error.status);
+                    if(error.status === 400){
+                      console.log("set to true fro 400 code");
+                      
+                      this.isNoCallToday = true;
+                    }
                     
                   }
                 })

@@ -13,8 +13,8 @@ export class AppComponent {
   constructor(private router: Router,
     private FCM: FcmServiceService,
               private data: DataService) {
-                this.FCM.initPush();
-                this.checkUser();
+                // this.FCM.initPush();
+                // this.checkUser();
               }
 
 

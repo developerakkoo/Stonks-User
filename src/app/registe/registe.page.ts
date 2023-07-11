@@ -6,6 +6,7 @@ import { HapticService } from '../services/haptics.service';
 import { LoadingController, ToastController } from '@ionic/angular';
 import { environment } from 'src/environments/environment';
 import { Router } from '@angular/router';
+import { DataService } from '../services/data.service';
 
 @Component({
   selector: 'app-registe',
@@ -14,6 +15,7 @@ import { Router } from '@angular/router';
 })
 export class RegistePage implements OnInit {
 
+  token:any;
   loginForm!: FormGroup;
   isRegistered: boolean = false;
   constructor(private formBuilder: FormBuilder,
@@ -21,6 +23,7 @@ export class RegistePage implements OnInit {
               private sound: SoundService,
               private haptic: HapticService,
               private router: Router,
+              private data: DataService,
               private loadingController: LoadingController,
               private toastController: ToastController) { 
                 this.loginForm = this.formBuilder.group({
@@ -30,7 +33,9 @@ export class RegistePage implements OnInit {
                 });
               }
 
-  ngOnInit() {
+  async ngOnInit() {
+  
+    
   }
 
   async presentLoading() {
@@ -48,17 +53,21 @@ export class RegistePage implements OnInit {
     toast.present();
   }
 
-  onSubmit(){
+  async onSubmit(){
     this.isRegistered = true;
     let obj = {
-      ...this.loginForm.value
+      email: this.loginForm.value.email,
+      password: this.loginForm.value.password,
+      name: this.loginForm.value.name
     }
-    this.http.post(environment.API +'App/api/v1/create',obj)
+    this.http.post(environment.API +'App/api/v1/create/user',obj)
     .subscribe({
-      next:(user:any) =>{
+      next:async (user:any) =>{
         console.log(user);
         if(user['User']){
           this.isRegistered = false; 
+          await this.data.set("userId", user['User']['ID']);
+
           this.haptic.hapticsImpactMedium();
           this.sound.playOne();
           this.router.navigate(['']);

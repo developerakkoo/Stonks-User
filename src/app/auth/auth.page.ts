@@ -1,6 +1,5 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
-import { GoogleAuthProvider, signInWithPopup, Auth, authState, authInstance$, signOut, getAuth, User } from '@angular/fire/auth';
 import { HttpClient } from '@angular/common/http';
 import { AnimationController, LoadingController, ToastController } from '@ionic/angular';
 import { environment } from 'src/environments/environment';
@@ -9,6 +8,7 @@ import { SoundService } from '../services/sound.service';
 import { DataService } from '../services/data.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Subscription } from 'rxjs';
+import { FcmServiceService } from '../services/fcm-service.service';
 
 @Component({
   selector: 'app-auth',
@@ -30,13 +30,13 @@ export class AuthPage implements OnInit {
 
 
   constructor(private router: Router,
-    private auth: Auth,
     private http: HttpClient,
     private animCtrl: AnimationController,
     private haptics: HapticService,
     private sound: SoundService,
     private data: DataService,
     private formBuilder: FormBuilder,
+    private fcm: FcmServiceService,
     private loadingController: LoadingController,
     private toastController: ToastController
   ) {
@@ -69,6 +69,10 @@ export class AuthPage implements OnInit {
 
   }
 
+  ionViewDidEnter(){
+    this.fcm.initPush();
+  }
+
   async presentToast(msg: string) {
     const toast = await this.toastController.create({
       message: msg,
@@ -82,7 +86,7 @@ export class AuthPage implements OnInit {
     let obj = {
       ...this.loginForm.value
     }
-    this.loginSub = this.http.post(environment.API + 'App/api/v1/loginUser', obj)
+    this.loginSub = this.http.post(environment.API + 'App/api/v1/login/user', obj)
       .subscribe({
         next: async (user: any) => {
           console.log(user);
@@ -113,64 +117,12 @@ export class AuthPage implements OnInit {
 
         }
       })
-    // signInWithPopup(this.auth, provider).then((success) =>{
-    //   console.log(success);
-    //   let user = success?.user;
-    //   console.log(user);
-
-    //   if(this.isLoggedIn ){
-    //     this.router.navigate(['tabs', 'tabs', 'tab1']);
-    //   }else{
-    //     this.postUserToAPI(user);
-    //   }
-
-    // }).catch((error) =>{
-    //   console.log(error);
-
-    // })
+  
 
   }
 
   goToRegister() {
     this.router.navigate(['registe']);
   }
-  async postUserToAPI(user: User) {
-    this.presentLoading();
-    console.log(user.displayName);
-    console.log(user.email);
-    console.log(user.photoURL);
-    console.log(user.uid);
-    let obj = {
-      googleId: user.uid,
-      email: user.email,
-      photo: user.photoURL,
-      name: user.displayName
 
-    };
-
-    await this.data.set("name", user.displayName);
-    await this.data.set("email", user.email);
-    await this.data.set("photo", user.photoURL);
-    this.http.post(environment.API + "App/api/v1/create", obj)
-      .subscribe({
-        next: async (value: any) => {
-          console.log(value);
-          this.loadingController.dismiss();
-          this.haptics.hapticsImpactMedium();
-          this.sound.playOne();
-          await this.data.set("userId", value['userCreated']['_id'])
-          await this.data.set("isLoggedIn", true);
-          this.router.navigate(['tabs', 'tabs', 'tab1']);
-
-
-        },
-        error: (error) => {
-          this.loadingController.dismiss();
-          console.log(error);
-          this.presentToast(error.error.message);
-
-        }
-      })
-
-  }
 }
