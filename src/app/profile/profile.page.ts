@@ -15,6 +15,13 @@ export class ProfilePage implements OnInit {
   email!:string;
   photo!:string;
 
+  subname!:string;
+  subDesc!:string;
+  subPrice!:string;
+  subDuration!:string;
+  subDate!:string;
+
+
 
   constructor(private data: DataService,
               private http: HttpClient) { }
@@ -32,6 +39,14 @@ export class ProfilePage implements OnInit {
         this.email = value['user']['email'];
         this.name = value['user']['name'];
         this.photo = value['user']['photo'];
+
+
+        this.subDate = value['user']['SubscriptionId']['createdAt'];
+        this.subDesc = value['user']['SubscriptionId']['description'];
+        this.subDuration = value['user']['SubscriptionId']['duration'];
+        this.subname = value['user']['SubscriptionId']['name'];
+        this.subPrice = value['user']['SubscriptionId']['price'];
+        
         
       },
       error:(error) =>{

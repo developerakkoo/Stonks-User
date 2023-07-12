@@ -12,14 +12,21 @@
   <ion-grid>
     <ion-row>
       <ion-col size="6" offset="3">
+        <img style="
+        display: flex;
+        justify-content: center;
+        width: 181px;
+        height: 181px;
+        
+        top: 40px;
+        border-radius: 50%;
+        background: #D9D9D9;" [src]="photo" alt="" srcset="">
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size="12">
         <div >
-          <img style="
-          width: 181px;
-          height: 181px;
-          
-          top: 40px;
-          border-radius: 50%;
-          background: #D9D9D9;" [src]="photo" alt="" srcset="">
+         
           </div>
 
           <ion-text style="
@@ -47,8 +54,8 @@
     <ion-col size="12">
       <ion-card>
         <ion-card-header>
-          <ion-card-subtitle color="medium">299.0 INR/Month</ion-card-subtitle>
-          <ion-card-title color="light">PREMIUM</ion-card-title>
+          <ion-card-subtitle color="medium">{{subPrice || "Not Purchased"}} INR/Month</ion-card-subtitle>
+          <ion-card-title color="light">{{subname}}</ion-card-title>
         </ion-card-header>
         <ion-card-content>
           <ion-text color="light" class="ion-text-center">

@@ -5,7 +5,7 @@
               position: inherit;
               z-index: 10;
               height: 400px;" 
-              src="assets/logo.png" alt="" srcset="">
+              src="assets/logo.jpeg" alt="" srcset="">
 
 
   <p class="para1">Specially designed for NIFTY Index</p>
@@ -20,7 +20,7 @@
         <ion-spinner *ngIf="isLoading" class="ion-margin-start" name="circular"></ion-spinner>
 
       </ion-button>
-      <ion-text color="medium" class="ion-text-right">
+      <ion-text color="medium" class="ion-text-right" (click)="openCapacitorSite()">
         <p style="font-family: 'Lato';
         font-style: normal;
         font-weight: 400;
@@ -33,7 +33,7 @@
     </form>
   
   <ion-text  class="ion-text-center">
-    <h6 class="text">By login you agree to our <strong>terms and conditions.</strong></h6>
+    <h5 class="text">By login you agree to our <strong>Terms and Conditions.</strong></h5>
   </ion-text>
  
     

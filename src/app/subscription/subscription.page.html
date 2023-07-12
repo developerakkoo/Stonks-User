@@ -23,7 +23,7 @@
             <ion-text color="light" class="ion-text-center">
               <h4>{{item.description}}</h4>
             </ion-text>
-            <ion-button  expand="block" fill="clear" shape="round" color="warning" (click)="pay(item.price)">
+            <ion-button  expand="block" fill="clear" shape="round" color="warning" (click)="pay(item.price, item._id)">
               BUY NOW
             </ion-button>
           </ion-card-content>

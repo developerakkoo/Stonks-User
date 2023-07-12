@@ -16,6 +16,7 @@ export const environment = {
     measurementId: 'G-PFN3XJKHYH',
   },
   production: false,
+  StripeKey:"pk_test_51NRBG8SBGsqYtPbhHvE8XO8NY6vxgKLTv6wENQM3friu7i3hb2pMcEZjAOl0B5ETUthd5AXUTmuJYduVCsvIBLxp003kjz2LWn"
   
 };
 

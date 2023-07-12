@@ -1,23 +1,57 @@
 PODS:
-  - Capacitor (5.0.5):
+  - Capacitor (5.1.1):
     - CapacitorCordova
-  - CapacitorApp (5.0.3):
+  - CapacitorApp (5.0.5):
     - Capacitor
-  - CapacitorCordova (5.0.5)
-  - CapacitorHaptics (5.0.4):
+  - CapacitorBrowser (5.0.5):
     - Capacitor
-  - CapacitorKeyboard (5.0.4):
+  - CapacitorCommunityStripe (5.0.1):
     - Capacitor
-  - CapacitorPushNotifications (5.0.4):
+    - StripeApplePay (= 23.4.0)
+    - StripeIdentity (= 23.4.0)
+    - StripePaymentSheet (= 23.4.0)
+  - CapacitorCordova (5.1.1)
+  - CapacitorHaptics (5.0.5):
     - Capacitor
-  - CapacitorStatusBar (5.0.4):
+  - CapacitorKeyboard (5.0.5):
     - Capacitor
-  - CordovaPlugins (5.0.5):
+  - CapacitorPushNotifications (5.0.5):
+    - Capacitor
+  - CapacitorStatusBar (5.0.5):
+    - Capacitor
+  - CordovaPlugins (5.1.1):
     - CapacitorCordova
+  - StripeApplePay (23.4.0):
+    - StripeCore (= 23.4.0)
+  - StripeCameraCore (23.4.0):
+    - StripeCore (= 23.4.0)
+  - StripeCore (23.4.0)
+  - StripeIdentity (23.4.0):
+    - StripeCameraCore (= 23.4.0)
+    - StripeCore (= 23.4.0)
+    - StripeUICore (= 23.4.0)
+  - StripePayments (23.4.0):
+    - StripeCore (= 23.4.0)
+    - StripePayments/Stripe3DS2 (= 23.4.0)
+  - StripePayments/Stripe3DS2 (23.4.0):
+    - StripeCore (= 23.4.0)
+  - StripePaymentSheet (23.4.0):
+    - StripeApplePay (= 23.4.0)
+    - StripeCore (= 23.4.0)
+    - StripePayments (= 23.4.0)
+    - StripePaymentsUI (= 23.4.0)
+  - StripePaymentsUI (23.4.0):
+    - StripeCore (= 23.4.0)
+    - StripePayments (= 23.4.0)
+    - StripeUICore (= 23.4.0)
+  - StripeUICore (23.4.0):
+    - StripeCore (= 23.4.0)
 
 DEPENDENCIES:
   - "Capacitor (from `../../node_modules/@capacitor/ios`)"
   - "CapacitorApp (from `../../node_modules/@capacitor/app`)"
+  - "CapacitorBrowser (from `../../node_modules/@capacitor/browser`)"
+  - "CapacitorCommunityStripe (from `../../node_modules/@capacitor-community/stripe`)"
   - "CapacitorCordova (from `../../node_modules/@capacitor/ios`)"
   - "CapacitorHaptics (from `../../node_modules/@capacitor/haptics`)"
   - "CapacitorKeyboard (from `../../node_modules/@capacitor/keyboard`)"
@@ -25,11 +59,26 @@ DEPENDENCIES:
   - "CapacitorStatusBar (from `../../node_modules/@capacitor/status-bar`)"
   - CordovaPlugins (from `../capacitor-cordova-ios-plugins`)
 
+SPEC REPOS:
+  trunk:
+    - StripeApplePay
+    - StripeCameraCore
+    - StripeCore
+    - StripeIdentity
+    - StripePayments
+    - StripePaymentSheet
+    - StripePaymentsUI
+    - StripeUICore
+
 EXTERNAL SOURCES:
   Capacitor:
     :path: "../../node_modules/@capacitor/ios"
   CapacitorApp:
     :path: "../../node_modules/@capacitor/app"
+  CapacitorBrowser:
+    :path: "../../node_modules/@capacitor/browser"
+  CapacitorCommunityStripe:
+    :path: "../../node_modules/@capacitor-community/stripe"
   CapacitorCordova:
     :path: "../../node_modules/@capacitor/ios"
   CapacitorHaptics:
@@ -44,15 +93,25 @@ EXTERNAL SOURCES:
     :path: "../capacitor-cordova-ios-plugins"
 
 SPEC CHECKSUMS:
-  Capacitor: b1248915663add1bd6567e2b67c1c1fa3abcf5e8
-  CapacitorApp: 7a5dec8b33573707164b293475d5c89ba684364a
-  CapacitorCordova: f8c06b897c74ee8f7701fe10e6443b40822bc83a
-  CapacitorHaptics: e36653b37326d71bb35ae42b944124037dbc3d97
-  CapacitorKeyboard: d1b25fde6f19744ad09c890862aefc6e2a7ded3d
-  CapacitorPushNotifications: 3704ac3dac68a9bfc669fb384cbc7beec9b1f100
-  CapacitorStatusBar: 190e0321b8734f4244d0c81baa183a00d5806ddf
-  CordovaPlugins: 22742ae7253dfccf584dc7ba979ba90e3c8edea4
+  Capacitor: 55956e1199b63efcd7f2dedffa5c6b9129c45aae
+  CapacitorApp: 9d91a5a400e4ad8cafe66a02cc9d8073c864d7bb
+  CapacitorBrowser: c08582e15086d4195f8e7808a6738b0499b6d52a
+  CapacitorCommunityStripe: d25acd64cfd813850ff1f91f217b8bdf94227db5
+  CapacitorCordova: b31a46ad379c93a5c04e0598a6164e8cb90c2bb2
+  CapacitorHaptics: 4b1a7e1bac1794d1515842d304f9fce46ef5084c
+  CapacitorKeyboard: ba4d618d80bf8caef4b9d8a971d714b9ca795e28
+  CapacitorPushNotifications: 6ec1a5d0dff2e8b2456bce633996d15fc9de92ac
+  CapacitorStatusBar: 540867ac3c63875b65bebd888f695de50a13a9a2
+  CordovaPlugins: 58818627c2be03522dc7f5d422a486cf97b30886
+  StripeApplePay: 637b45f59b43cb596932294bc1811543cbd7bfc4
+  StripeCameraCore: a438bafc9bda40edb956f935d481717103fa7feb
+  StripeCore: f872db348b65c2ab4abd24b330fcd8dc2a279f27
+  StripeIdentity: 118e1e4bf9ff23e693c0a2c418dabc6bbf4fb735
+  StripePayments: 6d974f7197b9e839b3a15080ff6acd04855a73a9
+  StripePaymentSheet: a27acfcdc24768828047805c28709f7f4fa48cab
+  StripePaymentsUI: 4e4f5c5af8653df94795af6414829628e8178afc
+  StripeUICore: 2d07f596393a9f35d60b2bc54942a495546417a5
 
-PODFILE CHECKSUM: 3fc83ecf3c0f66c98659efd45cdbcc0dbb4e511e
+PODFILE CHECKSUM: 1c7e516d7e510b5a1d8fb0d599a3d1ffe4104a72
 
 COCOAPODS: 1.12.1

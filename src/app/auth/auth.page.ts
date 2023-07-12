@@ -9,6 +9,7 @@ import { DataService } from '../services/data.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Subscription } from 'rxjs';
 import { FcmServiceService } from '../services/fcm-service.service';
+import { Browser } from '@capacitor/browser';
 
 @Component({
   selector: 'app-auth',
@@ -54,6 +55,9 @@ export class AuthPage implements OnInit {
   }
 
 
+  async  openCapacitorSite() {
+    await Browser.open({ url: 'https://api.niftyleveltracker.in/App/api/v1/user-forgot-password', presentationStyle:"popover" });
+  };
 
   async presentLoading() {
     const loading = await this.loadingController.create({
