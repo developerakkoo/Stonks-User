@@ -102,7 +102,7 @@ SPEC CHECKSUMS:
   CapacitorKeyboard: ba4d618d80bf8caef4b9d8a971d714b9ca795e28
   CapacitorPushNotifications: 6ec1a5d0dff2e8b2456bce633996d15fc9de92ac
   CapacitorStatusBar: 540867ac3c63875b65bebd888f695de50a13a9a2
-  CordovaPlugins: 58818627c2be03522dc7f5d422a486cf97b30886
+  CordovaPlugins: f28141165112d47d19d5a0271e155bcd76fe7a1a
   StripeApplePay: 637b45f59b43cb596932294bc1811543cbd7bfc4
   StripeCameraCore: a438bafc9bda40edb956f935d481717103fa7feb
   StripeCore: f872db348b65c2ab4abd24b330fcd8dc2a279f27

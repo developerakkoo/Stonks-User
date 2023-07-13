@@ -21,6 +21,8 @@ export class AuthPage implements OnInit {
   @ViewChild('loginBtn', { static: false }) loginBtn!: ElementRef;
   isLoggedIn: boolean = false;
 
+  passwordType:any = "password";
+  isPasswordHidden: boolean = true;
   isLoading: boolean = false;
 
   loginForm!: FormGroup;
@@ -37,7 +39,7 @@ export class AuthPage implements OnInit {
     private sound: SoundService,
     private data: DataService,
     private formBuilder: FormBuilder,
-    private fcm: FcmServiceService,
+  
     private loadingController: LoadingController,
     private toastController: ToastController
   ) {
@@ -74,7 +76,6 @@ export class AuthPage implements OnInit {
   }
 
   ionViewDidEnter(){
-    this.fcm.initPush();
   }
 
   async presentToast(msg: string) {
@@ -84,6 +85,17 @@ export class AuthPage implements OnInit {
     });
     toast.present();
   }
+
+  passwordToText(){
+    this.passwordType = "text";
+    this.isPasswordHidden = false;
+  }
+
+  textToPassword(){
+    this.passwordType = "password"
+    this.isPasswordHidden = true;
+
+;  }
 
   loginWithGoogle() {
     this.isLoading = true;
@@ -103,7 +115,7 @@ export class AuthPage implements OnInit {
             await this.data.set("userId", res['Id']);
           await this.data.set("isLoggedIn", true);
 
-            this.router.navigate(['tabs', 'tabs', 'tab1']);
+            this.router.navigate(['tabs','tab2']);
 
           }else{
             this.isLoading =false;

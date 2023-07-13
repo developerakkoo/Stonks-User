@@ -2,7 +2,7 @@
   <ion-toolbar>
     <ion-title class="title">Subscription</ion-title>
     <ion-buttons  color="light" slot="start">
-      <ion-back-button defaultHref="/tabs/tabs/tab3"></ion-back-button>
+      <ion-back-button defaultHref="/tabs/tab3"></ion-back-button>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
@@ -23,7 +23,8 @@
             <ion-text color="light" class="ion-text-center">
               <h4>{{item.description}}</h4>
             </ion-text>
-            <ion-button  expand="block" fill="clear" shape="round" color="warning" (click)="pay(item.price, item._id)">
+            <ion-button  expand="block" fill="clear" shape="round" color="warning" (click)="openStripePaymentPage
+            (item.price)">
               BUY NOW
             </ion-button>
           </ion-card-content>

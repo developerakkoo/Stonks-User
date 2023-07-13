@@ -7,6 +7,23 @@
     margin-top: 10%;
 }
 
+ion-item {
+  margin-bottom: 10px;
+  background: transparent;
+  border: 1px solid #92949c;
+  border-radius: 4px;
+  --highlight-height: 0px;
+  --highlight-color-valid: #92949c;
+  --highlight-color-focused: #92949c;
+  --highlight-color-invalid: #92949c;
+}
+
+.iconEye {
+  font-size: 24px;
+  padding-left: 4px;
+  padding-top: 12px;
+  vertical-align: middle;
+}
 ion-checkbox {
     --size: 22px;
     --checkbox-background-checked: #6815ec;
@@ -48,37 +65,35 @@ ion-button{
 }
 
   .para1{
-    z-index: 200;
     font-family: 'Lato';
 font-style: normal;
 font-weight: 400;
-font-size: 15px;
+font-size: 18px;
 line-height: -1px;
-top: 43vh;
-position: static;
+top: 340px;
+position: fixed;
 text-align: center;
 width: 100%;
 display: flex;
 justify-content: center;
 
-color: #a7a7a7;
+color: #878686;
   }
 
   .para2{
-    z-index: 200;
     font-family: 'Lato';
 font-style: normal;
 font-weight: 400;
-font-size: 15px;
+font-size: 18px;
 line-height: 0px;
-top: 49vh;
-position: static;
+top: 370px;
+position: fixed;
 width: 100%;
 
 text-align: center;
 display: flex;
 justify-content: center;
-color: #a7a7a7;
+color: #878686;
 
 
 

@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { Socket } from 'ngx-socket-io';
 import { environment } from 'src/environments/environment';
+import { FcmServiceService } from '../services/fcm-service.service';
 
 @Component({
   selector: 'app-tab1',
@@ -25,6 +26,7 @@ export class Tab1Page {
   getSocketInteval:any;
   constructor(private router: Router,
             private socket: Socket,
+            private fcm: FcmServiceService,
     private http: HttpClient) {
       this.socket.connect();
       this.socket.on('get:Stocks',(value:any) =>{
@@ -49,6 +51,7 @@ export class Tab1Page {
 
     ionViewDidEnter(){
       // this.getAllStocks();
+      this.fcm.initPush();
     this.getSocketInteval =   setInterval(() =>{
         this.getAllStocks();
         this.getNifty50Price();

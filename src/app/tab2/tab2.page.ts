@@ -23,6 +23,7 @@ export class Tab2Page {
   target:any;
   isCall:boolean = false;
   date:any;
+  entryPrice:any;
 
   isNoCallToday!:boolean;
   nifty50inteval:any;
@@ -100,6 +101,7 @@ export class Tab2Page {
                       this.stoploss = value['stock'][0]['stopLoss'];
                       this.target = value['stock'][0]['targetPrice'];
                       this.isCall = value['stock'][0]['isCall'];
+                      this.entryPrice = value['stock'][0]['entryPrice']
                     }
                     
                   },

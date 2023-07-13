@@ -29,6 +29,10 @@ const routes: Routes = [
   {
     path: 'registe',
     loadChildren: () => import('./registe/registe.module').then( m => m.RegistePageModule)
+  },
+  {
+    path: 'stripe-payement/:amount',
+    loadChildren: () => import('./stripe-payement/stripe-payement.module').then( m => m.StripePayementPageModule)
   }
 ];
 @NgModule({

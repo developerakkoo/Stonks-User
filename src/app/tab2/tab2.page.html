@@ -13,8 +13,9 @@
       <ion-col size="6" offset="3">
         <ion-text class="ion-text-center" color="primary">
           <img src="/assets/realx.svg" alt="" srcset="">
-          <h4>Sit Back and Relax!</h4>
-          <p>We will notify you once calls are provided.</p>
+          <h3>Sit Back and Relax!</h3>
+          <h6>We Strive to provide refined calls Only!</h6>
+
         </ion-text>
       </ion-col>
     </ion-row>
@@ -62,7 +63,7 @@
     
         <div [class]="isCall ? 'capsule buy animate__animated animate__slideInRight' : 'capsule sell animate__animated animate__slideInRight'">
           <p style="
-          font-family: 'Lato';
+         font-family: 'Lato';
           font-style: normal;
           font-weight: 700;
           font-size: 16px;
@@ -70,7 +71,7 @@
          
           
           color: #FFFFFF;
-          ">{{isCall ? 'CALL' : 'CALL'}}</p>
+          ">{{call}}</p>
           <br>
           <h4 style="position: absolute;
           width: 119px;
@@ -80,12 +81,12 @@
           
           font-family: 'Lato';
           font-style: normal;
-          font-weight: 300;
-          font-size: 22px;
+          font-weight: 700;
+          font-size: 32px;
           line-height: 38px;
           text-align: center;
           
-          color: #FFFFFF;">{{call}}</h4>
+          color: #FFFFFF;">{{entryPrice}}</h4>
           <div class="circle">
             <ion-avatar style="padding: 10px;">
               <img src="/assets/bull.png" />
@@ -161,7 +162,7 @@
         </div>
 
         <ion-text color="primary">
-         <p>Remark: Any calls or levels provided here are only for learning purposes only. Trading based on those calls or levels are to be decided on their own discretion.</p>
+         <p>Remark: Any calls or levels provided here are only for learning purposes. Trading based on those calls or levels are to be decided on their own discretion.</p>
         </ion-text>
       </ion-col>
     </ion-row>
@@ -171,3 +172,12 @@
    
   
 </ion-content>
+
+<ion-footer  *ngIf="isNoCallToday == true" lines=none>
+  <ion-toolbar>
+    <ion-text color="primary" class="ion-text-center">
+      <p> <strong>We will notify you once calls are provided</strong> </p>
+
+    </ion-text>
+  </ion-toolbar>
+</ion-footer>

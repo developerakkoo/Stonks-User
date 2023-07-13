@@ -12,6 +12,7 @@ import { environment } from '../environments/environment';
 import { provideAuth,getAuth } from '@angular/fire/auth';
 import { IonicStorageModule } from '@ionic/storage-angular';
 import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
+import { Stripe } from '@awesome-cordova-plugins/stripe/ngx';
 
 const config: SocketIoConfig = { url: 'https://api.niftyleveltracker.in', options: {} };
 
@@ -22,7 +23,7 @@ const config: SocketIoConfig = { url: 'https://api.niftyleveltracker.in', option
     provideFirebaseApp(() => initializeApp(environment.firebase)), provideAuth(() => getAuth()),
 
   ],
-  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy },],
+  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy },Stripe],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

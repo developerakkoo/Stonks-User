@@ -2,20 +2,50 @@
   <img style="display: flex;
               align-items: center;
               width: 100%;
-              position: inherit;
-              z-index: 10;
-              height: 400px;" 
+              position: sticky;
+              height: 350px;" 
               src="assets/logo.jpeg" alt="" srcset="">
 
 
-  <p class="para1">Specially designed for NIFTY Index</p>
-  <p class="para2">FUTURES and OPTIONS intraday traders</p>
+              <ion-text color="medium" class="ion-text-center">
+                <p >Specially designed for NIFTY Index</p>
+              </ion-text>
+              <br>
+              <ion-text color="medium" class="ion-text-center">
+                <p >FUTURES and OPTIONS intraday traders</p>
+              </ion-text>
 
 
     <form [formGroup]="loginForm" (ngSubmit)="loginWithGoogle()" style="padding: 20px;">
         <ion-input style="margin-bottom: 10px;" placeholder="Enter email" label="Email" label-placement="floating" fill="outline" required formControlName="email" type="text"></ion-input>
-        <ion-input  required  placeholder="Enter password" label="Password" label-placement="floating" fill="outline" formControlName="password" type="text"></ion-input>
-      <ion-button style="margin-top: 10px;" #loginBtn class="ion-margin-top" expand="full" color="primary" type="submit" >
+        
+        
+        <ion-item>
+          <ion-input  required  placeholder="Enter password" label="Password" label-placement="floating" formControlName="password" [type]="passwordType">
+          
+          </ion-input>
+          <ion-icon
+          *ngIf="isPasswordHidden"
+          name="eye-outline"
+          slot="end"
+          (click)="passwordToText()"
+         
+        ></ion-icon>
+        <ion-icon
+        *ngIf="!isPasswordHidden"
+
+          name="eye-off-outline"
+          slot="end"
+          (click)="textToPassword()"
+         
+        ></ion-icon>
+        </ion-item>
+      
+      
+     
+     
+     
+        <ion-button style="margin-top: 10px;" #loginBtn class="ion-margin-top" expand="full" color="primary" type="submit" [disabled]="loginForm.invalid" >
         Login
         <ion-spinner *ngIf="isLoading" class="ion-margin-start" name="circular"></ion-spinner>
 
@@ -28,12 +58,12 @@
         width: 100%;
         margin-top: 5px;
  
-        color: #bfbfbf;">Forgot Password?</p>
+        color: #8f8f8f;">Forgot Password?</p>
       </ion-text>
     </form>
   
   <ion-text  class="ion-text-center">
-    <h5 class="text">By login you agree to our <strong>Terms and Conditions.</strong></h5>
+    <h2 class="text">By login you agree to our <strong>Terms and Conditions.</strong></h2>
   </ion-text>
  
     
@@ -42,8 +72,8 @@
 
 <ion-footer>
   <ion-toolbar lines="none" (click)="goToRegister()">
-   <ion-text class="ion-text-center" color="medium">
-    <h6>Create an account?</h6>
+   <ion-text class="ion-text-center" color="primary">
+    <h6>Create an new account?</h6>
    </ion-text>
   </ion-toolbar>
 </ion-footer>
