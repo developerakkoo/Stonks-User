@@ -56,17 +56,17 @@ export class Tab2Page {
 
 
               ionViewDidEnter(){
-                console.log(moment().format("MM-DD-YYYY"));
-                this.date = moment().format("MM-DD-YYYY");
+                console.log(moment().format("DD-MM-YYYY"));
+                this.date = moment().format("DD-MM-YYYY");
                 console.log("Tab 2 loaded");
-                this.getNifty50Price();
-                this.getNoCallStatus();
-                this.getCallPutData();
-                // this.nifty50inteval =  setInterval(() =>{
-                //  this.getNoCallStatus();
-                //   this.getCallPutData();
                 // this.getNifty50Price();
-                // },2000)
+                // this.getNoCallStatus();
+                // this.getCallPutData();
+                this.nifty50inteval =  setInterval(() =>{
+                 this.getNoCallStatus();
+                  this.getCallPutData();
+                this.getNifty50Price();
+                },2000)
                 
                 
                 
