@@ -14,14 +14,14 @@ export class AppComponent {
     private FCM: FcmServiceService,
               private data: DataService) {
                 // this.FCM.initPush();
-                // this.checkUser();
+                this.checkUser();
               }
 
 
              async checkUser(){
               this.isLoggedIn = await this.data.get("isLoggedIn");
               if(this.isLoggedIn){
-                this.router.navigate(['tabs', 'tabs', 'tab1']);
+                this.router.navigate(['tabs', 'tab2']);
 
               }else{
                 this.router.navigate(['']);

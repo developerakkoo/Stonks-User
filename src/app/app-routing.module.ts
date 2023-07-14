@@ -33,6 +33,10 @@ const routes: Routes = [
   {
     path: 'stripe-payement/:amount',
     loadChildren: () => import('./stripe-payement/stripe-payement.module').then( m => m.StripePayementPageModule)
+  },
+  {
+    path: 'blocked-page',
+    loadChildren: () => import('./blocked-page/blocked-page.module').then( m => m.BlockedPagePageModule)
   }
 ];
 @NgModule({

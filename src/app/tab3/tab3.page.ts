@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { HapticService } from '../services/haptics.service';
+import { DataService } from '../services/data.service';
 
 @Component({
   selector: 'app-tab3',
@@ -10,6 +11,7 @@ import { HapticService } from '../services/haptics.service';
 export class Tab3Page {
 
   constructor(private router: Router,
+              private data: DataService,
               private haptics: HapticService) {}
 
 
@@ -18,7 +20,8 @@ export class Tab3Page {
     this.router.navigate([name]);
   }
 
-  onLogout(){
+  async onLogout(){
+    this.data.remove("isLoggedIn");
     this.router.navigate([''])
   }
 }

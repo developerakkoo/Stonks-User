@@ -20,6 +20,7 @@ export class ProfilePage implements OnInit {
   subPrice!:string;
   subDuration!:string;
   subDate!:string;
+  subEndDate!:string;
 
 
 
@@ -46,6 +47,9 @@ export class ProfilePage implements OnInit {
         this.subDuration = value['user']['SubscriptionId']['duration'];
         this.subname = value['user']['SubscriptionId']['name'];
         this.subPrice = value['user']['SubscriptionId']['price'];
+        this.subEndDate = value['user']['SubscriptionEndDate']
+        console.log(this.subPrice);
+        
         
         
       },

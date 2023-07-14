@@ -29,6 +29,7 @@ export class Tab1Page {
             private fcm: FcmServiceService,
     private http: HttpClient) {
       this.socket.connect();
+      this.socket.emit("get:Nifty50");
       this.socket.on('get:Stocks',(value:any) =>{
         console.log("socket");
         console.log(value);
@@ -41,6 +42,7 @@ export class Tab1Page {
         
       })
 
+      
       this.socket.on('get:Nifty50',(value:any) =>{
         console.log(`Nifty Price`);
         console.log(value);
@@ -53,7 +55,7 @@ export class Tab1Page {
       // this.getAllStocks();
       this.fcm.initPush();
     this.getSocketInteval =   setInterval(() =>{
-        this.getAllStocks();
+        // this.getAllStocks();
         this.getNifty50Price();
       },1000);
     }
