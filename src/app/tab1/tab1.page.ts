@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { Socket } from 'ngx-socket-io';
 import { environment } from 'src/environments/environment';
 import { FcmServiceService } from '../services/fcm-service.service';
+import { DataService } from '../services/data.service';
 
 @Component({
   selector: 'app-tab1',
@@ -11,7 +12,7 @@ import { FcmServiceService } from '../services/fcm-service.service';
   styleUrls: ['tab1.page.scss']
 })
 export class Tab1Page {
-
+  userId:any;
 
   stocks:any[] = [];
   isLoading: boolean = false;
@@ -25,13 +26,17 @@ export class Tab1Page {
 
   getSocketInteval:any;
   constructor(private router: Router,
+    private data: DataService,
             private socket: Socket,
-            private fcm: FcmServiceService,
     private http: HttpClient) {
       this.socket.connect();
-      this.socket.emit("get:Nifty50");
+      this.socket.on('connect',() =>{
+        console.log("Connected");
+        
+      })
+
       this.socket.on('get:Stocks',(value:any) =>{
-        console.log("socket");
+        console.log("data received");
         console.log(value);
         this.stocks = [];
 
@@ -39,6 +44,7 @@ export class Tab1Page {
           const element = value[index];
           this.stocks.push(element);
         }
+
         
       })
 
@@ -51,11 +57,32 @@ export class Tab1Page {
       })
     }
 
+
+    async ngOnInit() {
+      this.userId = await this.data.get("userId");
+      this.getUserProfile();
+     }
+   
+     getUserProfile(){
+       this.http.get(environment.API +`App/api/v1/get/user/${this.userId}`)
+       .subscribe({
+         next:(value:any) =>{
+           console.log(value);
+          
+           
+           
+           
+         },
+         error:(error) =>{
+           console.log(error);
+           
+         }
+       })
+     }
     ionViewDidEnter(){
-      // this.getAllStocks();
-      this.fcm.initPush();
+      // this.fcm.initPush();
     this.getSocketInteval =   setInterval(() =>{
-        // this.getAllStocks();
+        this.getAllStocks();
         this.getNifty50Price();
       },1000);
     }
@@ -82,11 +109,11 @@ export class Tab1Page {
       .subscribe({
         next:(value:any) =>{
           console.log(value);
-          for (let index = 0; index < value.length; index++) {
-            const element = value[index];
-            this.stocks.push(element);
-            this.isLoading = true;
-          }
+          // for (let index = 0; index < value.length; index++) {
+          //   const element = value[index];
+          //   this.stocks.push(element);
+          // }
+          this.isLoading = true;
           
         },
         error:(error) =>{

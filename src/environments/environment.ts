@@ -4,6 +4,7 @@
 
 export const environment = {
   API:"https://api.niftyleveltracker.in/",
+  // API:"http://192.168.0.228:8000",
 
   firebase: {
     projectId: 'stonks-b66d4',

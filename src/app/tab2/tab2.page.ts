@@ -7,6 +7,7 @@ import { environment } from 'src/environments/environment';
 import * as moment from 'moment';
 import { Router } from '@angular/router';
 import { Socket } from 'ngx-socket-io';
+import { FcmServiceService } from '../services/fcm-service.service';
 
 @Component({
   selector: 'app-tab2',
@@ -31,6 +32,8 @@ export class Tab2Page {
               private data: DataService,
               private router: Router,
               private socket: Socket,
+            private fcm: FcmServiceService,
+
               private haptics: HapticService,
               ) {
                 console.log(moment().format("DD-MM-YYYY"));
@@ -38,7 +41,7 @@ export class Tab2Page {
                 let url = this.router.url;
                 console.log(url);
                 console.log(this.date);
-                
+                this.fcm.initPush();
                 this.socket.connect();
                 this.socket.on('get:Nifty50',(value:any) =>{
                   console.log(`Nifty Price`);
