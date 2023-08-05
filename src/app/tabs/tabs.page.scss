@@ -1,8 +1,12 @@
 
 ion-tab-bar{
   --background: url(../../assets/bg.jpeg)  no-repeat 100% center/cover;
+  --background-focused: rgb(253, 253, 253);
+--color-selected: rgb(252, 252, 252);
+--color: rgb(194, 186, 186);
   
 }
-ion-tab-button[aria-selected=true] {
+ion-tab-button {
   background-color: #ed1e1e;
+
 }

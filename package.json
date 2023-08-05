@@ -34,6 +34,7 @@
     "@capacitor/status-bar": "^5.0.5",
     "@ionic/angular": "^7.1.2",
     "@ionic/storage-angular": "^4.0.0",
+    "@stripe-elements/stripe-elements": "^2.0.2",
     "chart.js": "^4.3.0",
     "com.telerik.plugins.nativepagetransitions": "^0.7.0",
     "cordova-plugin-stripe": "^1.5.3",

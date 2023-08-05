@@ -5,9 +5,11 @@ import { environment } from 'src/environments/environment';
 import { DataService } from '../services/data.service';
 import { HapticService } from '../services/haptics.service';
 import { SoundService } from '../services/sound.service';
-import { Stripe } from '@awesome-cordova-plugins/stripe/ngx';
 import { Router } from '@angular/router';
 import { Browser } from '@capacitor/browser';
+import { Stripe, PaymentSheetEventsEnum } from '@capacitor-community/stripe';
+import { first } from 'rxjs/operators';
+
 declare var Razorpay: any;
 @Component({
   selector: 'app-subscription',
@@ -16,17 +18,23 @@ declare var Razorpay: any;
 })
 export class SubscriptionPage implements OnInit {
 
+  paymentIntent:any;
+  customer:any;
+  ephemeralKey:any;
+
   cardDetails:any = {};
   plans:any[] =[];
   userId!:string;
   constructor(private http: HttpClient,
     private alertController: AlertController,
-    private stripe: Stripe,
     private haptics: HapticService,
     private sound:SoundService,
     private router: Router,
     private data: DataService,
     private loadingController: LoadingController) {
+      Stripe.initialize({
+        publishableKey: environment.StripeKey,
+      });
     this.getSubList();
    }
 
@@ -92,6 +100,17 @@ export class SubscriptionPage implements OnInit {
   
     await alert.present();
   }
+
+  async presentAlert() {
+    const alert = await this.alertController.create({
+      header: 'Payment Success',
+      subHeader: 'Your Subscription purchase was Successful',
+      message: 'You can view the details in profile.',
+      buttons: ['OK']
+    });
+  
+    await alert.present();
+  }
  pay(amount:any, subId:string){
   console.log(amount);
   this.presentAlertConfirm(subId);
@@ -112,6 +131,7 @@ export class SubscriptionPage implements OnInit {
       this.haptics.hapticsImpactLight();
       this.sound.playOne();
       await loading.dismiss();
+      this.presentAlert();
       
     },
     error:async (error) =>{
@@ -125,5 +145,66 @@ export class SubscriptionPage implements OnInit {
       
     }
   })
+ }
+
+ async paymentSheet(amount:any, subId:any){
+
+
+  // be able to get event of PaymentSheet
+  Stripe.addListener(PaymentSheetEventsEnum.Completed, () => {
+    console.log('PaymentSheetEventsEnum.Completed');
+  });
+  
+  // Connect to your backend endpoint, and get every key.
+  // const { paymentIntent, ephemeralKey, customer } = await this.http.post<{
+  //   paymentIntent: string;
+  //   ephemeralKey: string;
+  //   customer: string;
+  // }>(environment.API + 'payment-sheet', {}).pipe(first())
+
+  this.http.post(environment.API+"payment-sheet", {
+    amount: amount,
+    name:"Akshay",
+    email:"developer@techlapse.in"
+  })
+  .subscribe({
+    next:(value) =>{
+      console.log(value);
+      
+    },
+    error:(error) =>{
+      console.log(error);
+      
+    }
+  })
+  // prepare PaymentSheet with CreatePaymentSheetOption.
+  await Stripe.createPaymentSheet({
+    paymentIntentClientSecret: this.paymentIntent,
+    customerId: this.customer,
+    customerEphemeralKeySecret: this.ephemeralKey,
+  });
+
+  // present PaymentSheet and get result.
+  const result = await Stripe.presentPaymentSheet();
+  if (result.paymentResult === PaymentSheetEventsEnum.Completed) {
+    // Happy path
+    console.log("Payment Success❤️");
+    this.purchaseSubscription(subId);
+
+    
+
+  } if (result.paymentResult === PaymentSheetEventsEnum.Failed) {
+    // Happy path
+    console.log("Payment Failed");
+    
+
+  }
+  if (result.paymentResult === PaymentSheetEventsEnum.Canceled) {
+    // Happy path
+    console.log("Payment Cancelled");
+    
+
+  }
+  
  }
 }

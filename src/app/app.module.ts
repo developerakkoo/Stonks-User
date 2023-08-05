@@ -13,8 +13,10 @@ import { provideAuth,getAuth } from '@angular/fire/auth';
 import { IonicStorageModule } from '@ionic/storage-angular';
 import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
 import { Stripe } from '@awesome-cordova-plugins/stripe/ngx';
-
-const config: SocketIoConfig = { url: 'https://api.niftyleveltracker.in', options: {} };
+// API:"http://192.168.3.105:8000",
+const config: SocketIoConfig = { url: 'https://api.niftyleveltracker.in',  options: {
+  autoConnect:true
+} };
 
 @NgModule({
   declarations: [AppComponent],

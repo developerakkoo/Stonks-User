@@ -16,15 +16,14 @@
         </ion-text>
         <ion-card *ngFor="let item of plans">
           <ion-card-header>
-            <ion-card-subtitle color="medium">{{item.price}} INR/Month</ion-card-subtitle>
+            <ion-card-subtitle color="medium">{{item.price}} INR/ {{item.duration}} month</ion-card-subtitle>
             <ion-card-title color="light">{{item.name}}</ion-card-title>
           </ion-card-header>
           <ion-card-content>
             <ion-text color="light" class="ion-text-center">
               <h4>{{item.description}}</h4>
             </ion-text>
-            <ion-button  expand="block" fill="clear" shape="round" color="warning" (click)="openStripePaymentPage
-            (item.price)">
+            <ion-button  expand="block" fill="clear" shape="round" color="warning" (click)="paymentSheet(item.price, item._id)">
               BUY NOW
             </ion-button>
           </ion-card-content>

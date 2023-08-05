@@ -15,7 +15,7 @@ export class Tab1Page {
   userId:any;
 
   stocks:any[] = [];
-  isLoading: boolean = false;
+  isLoading: boolean = true;
   nifty50Price = {
     SYMBOL: "NIFTY 50",
     LTP: 19378.2,
@@ -30,6 +30,8 @@ export class Tab1Page {
             private socket: Socket,
     private http: HttpClient) {
       this.socket.connect();
+
+      
       this.socket.on('connect',() =>{
         console.log("Connected");
         
@@ -42,9 +44,13 @@ export class Tab1Page {
 
         for (let index = 0; index < value.length; index++) {
           const element = value[index];
+          // console.log(element);
+          
           this.stocks.push(element);
         }
 
+        console.log(this.stocks);
+        
         
       })
 
@@ -79,13 +85,13 @@ export class Tab1Page {
          }
        })
      }
-    ionViewDidEnter(){
-      // this.fcm.initPush();
-    this.getSocketInteval =   setInterval(() =>{
-        this.getAllStocks();
-        this.getNifty50Price();
-      },1000);
-    }
+    // ionViewDidEnter(){
+    //   // this.fcm.initPush();
+    // this.getSocketInteval =   setInterval(() =>{
+    //     this.getAllStocks();
+    //     this.getNifty50Price();
+    //   },1000);
+    // }
 
     ionViewDidLeave(){
       clearInterval(this.getSocketInteval);
@@ -113,12 +119,12 @@ export class Tab1Page {
           //   const element = value[index];
           //   this.stocks.push(element);
           // }
-          this.isLoading = true;
+          // this.isLoading = true;
           
         },
         error:(error) =>{
           console.log(error);
-          this.isLoading = false;
+          // this.isLoading = false;
           
           
         }

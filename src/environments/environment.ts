@@ -4,7 +4,7 @@
 
 export const environment = {
   API:"https://api.niftyleveltracker.in/",
-  // API:"http://192.168.0.228:8000",
+  // API:"http://192.168.3.105:8000/",
 
   firebase: {
     projectId: 'stonks-b66d4',
@@ -17,8 +17,8 @@ export const environment = {
     measurementId: 'G-PFN3XJKHYH',
   },
   production: false,
-  StripeKey:"pk_test_51NRBG8SBGsqYtPbhHvE8XO8NY6vxgKLTv6wENQM3friu7i3hb2pMcEZjAOl0B5ETUthd5AXUTmuJYduVCsvIBLxp003kjz2LWn"
-  
+  StripeKey:"pk_test_51NRBG8SBGsqYtPbhHvE8XO8NY6vxgKLTv6wENQM3friu7i3hb2pMcEZjAOl0B5ETUthd5AXUTmuJYduVCsvIBLxp003kjz2LWn",
+  StripeSecret:'sk_test_51NRBG8SBGsqYtPbhSk9hzpx7xQPQ2Y96IRW69M7HD2b7ebnGX5hG3OoSZGOdozxznS1s6BXyts6WN7l6RvsuOJqf00mhRtUHFs'
 };
 
 /*

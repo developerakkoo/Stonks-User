@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { DataService } from '../services/data.service';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-profile',
@@ -22,9 +23,12 @@ export class ProfilePage implements OnInit {
   subDate!:string;
   subEndDate!:string;
 
+  isFreePlan!:boolean;
+
 
 
   constructor(private data: DataService,
+              private router: Router,
               private http: HttpClient) { }
 
   async ngOnInit() {
@@ -32,6 +36,9 @@ export class ProfilePage implements OnInit {
    this.getUserProfile();
   }
 
+  goToSubcriptionPage(){
+    this.router.navigate(['subscription']);
+  }
   getUserProfile(){
     this.http.get(environment.API +`App/api/v1/get/user/${this.userId}`)
     .subscribe({
@@ -41,14 +48,25 @@ export class ProfilePage implements OnInit {
         this.name = value['user']['name'];
         this.photo = value['user']['photo'];
 
+        if(value['user']['Subscription'] == "freePlan"){
+          console.log("Freee Plan Active");
+          this.isFreePlan = true;
+          this.subEndDate = value['user']['SubscriptionEndDate']
 
-        this.subDate = value['user']['SubscriptionId']['createdAt'];
-        this.subDesc = value['user']['SubscriptionId']['description'];
-        this.subDuration = value['user']['SubscriptionId']['duration'];
-        this.subname = value['user']['SubscriptionId']['name'];
-        this.subPrice = value['user']['SubscriptionId']['price'];
-        this.subEndDate = value['user']['SubscriptionEndDate']
-        console.log(this.subPrice);
+          
+        }if(value['user']['Subscription'] == "paidPlan") {
+          this.isFreePlan = false;
+
+          this.subDate = value['user']['SubscriptionId']['createdAt'];
+          this.subDesc = value['user']['SubscriptionId']['description'];
+          this.subDuration = value['user']['SubscriptionId']['duration'];
+          this.subname = value['user']['SubscriptionId']['name'];
+          this.subPrice = value['user']['SubscriptionId']['price'];
+          this.subEndDate = value['user']['SubscriptionEndDate']
+          console.log(this.subPrice);
+        }
+
+        
         
         
         

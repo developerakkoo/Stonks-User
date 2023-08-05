@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { DataService } from './services/data.service';
 import { FcmServiceService } from './services/fcm-service.service';
+import { Stripe } from '@capacitor-community/stripe';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-root',
@@ -14,6 +16,7 @@ export class AppComponent {
     private FCM: FcmServiceService,
               private data: DataService) {
                 // this.FCM.initPush();
+               
                 this.checkUser();
               }
 
