@@ -8,20 +8,23 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <div class="chart-container">
+  <!-- <div class="chart-container">
     <canvas  id="MyChart" >{{ chart }}</canvas>
-</div>
+</div> -->
 
 
 <ion-list>
   <ion-list-header>
-    <ion-label>Last 10 Calls Backtested Results</ion-label>
+    <ion-label>Last 10 Calls Details</ion-label>
   </ion-list-header>
 
 
   <ion-item [color]="item.isCall ?  'success' : 'danger'" *ngFor="let item of data">
     <ion-label>
-      <p>Date: {{item.createdAt | date}}</p>
+
+      <p>Type: {{item.call | uppercase}} </p>
+      <p>Date: {{item.createdAt || "No Date" | date}}</p>
+      <p>Time: {{item.createdAt  |date:"shortTime"}}</p>
       <p>Target: {{item.targetPrice}} </p>
       <p>Entry: {{item.entryPrice}} </p>
       <p>Stop Loss: {{item.stopLoss}} </p>

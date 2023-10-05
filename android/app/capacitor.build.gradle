@@ -16,6 +16,7 @@ dependencies {
     implementation project(':capacitor-keyboard')
     implementation project(':capacitor-push-notifications')
     implementation project(':capacitor-status-bar')
+    implementation "com.google.android.play:core:1.+"
     implementation "com.stripe:stripe-android:4.1.2"
 }
 

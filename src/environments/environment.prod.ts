@@ -13,6 +13,7 @@ export const environment = {
     measurementId: 'G-PFN3XJKHYH',
   },
   production: true,
-  StripeKey:"pk_test_51NRBG8SBGsqYtPbhHvE8XO8NY6vxgKLTv6wENQM3friu7i3hb2pMcEZjAOl0B5ETUthd5AXUTmuJYduVCsvIBLxp003kjz2LWn",
-  StripeSecret:'sk_test_51NRBG8SBGsqYtPbhSk9hzpx7xQPQ2Y96IRW69M7HD2b7ebnGX5hG3OoSZGOdozxznS1s6BXyts6WN7l6RvsuOJqf00mhRtUHFs'
+  StripeKey:"pk_live_51NRBG8SBGsqYtPbhK4qyxgcKOnavch0nVOWlWzEOhig3PFOl0J9SyCbIV80TMgwasInL4wWUgG3DRgwd0ywMyDa300fTyvbfDF",
+  StripeSecret:'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'
+
 };

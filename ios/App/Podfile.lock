@@ -21,6 +21,7 @@ PODS:
     - Capacitor
   - CordovaPlugins (5.1.1):
     - CapacitorCordova
+  - CordovaPluginsResources (0.0.105)
   - StripeApplePay (23.4.0):
     - StripeCore (= 23.4.0)
   - StripeCameraCore (23.4.0):
@@ -58,6 +59,7 @@ DEPENDENCIES:
   - "CapacitorPushNotifications (from `../../node_modules/@capacitor/push-notifications`)"
   - "CapacitorStatusBar (from `../../node_modules/@capacitor/status-bar`)"
   - CordovaPlugins (from `../capacitor-cordova-ios-plugins`)
+  - CordovaPluginsResources (from `../capacitor-cordova-ios-plugins`)
 
 SPEC REPOS:
   trunk:
@@ -91,6 +93,8 @@ EXTERNAL SOURCES:
     :path: "../../node_modules/@capacitor/status-bar"
   CordovaPlugins:
     :path: "../capacitor-cordova-ios-plugins"
+  CordovaPluginsResources:
+    :path: "../capacitor-cordova-ios-plugins"
 
 SPEC CHECKSUMS:
   Capacitor: 55956e1199b63efcd7f2dedffa5c6b9129c45aae
@@ -102,7 +106,8 @@ SPEC CHECKSUMS:
   CapacitorKeyboard: ba4d618d80bf8caef4b9d8a971d714b9ca795e28
   CapacitorPushNotifications: 6ec1a5d0dff2e8b2456bce633996d15fc9de92ac
   CapacitorStatusBar: 540867ac3c63875b65bebd888f695de50a13a9a2
-  CordovaPlugins: f28141165112d47d19d5a0271e155bcd76fe7a1a
+  CordovaPlugins: f1589117008e1995b3deedc70f56ba38eed102dc
+  CordovaPluginsResources: 1b3992e05cb6336d2850cd77dd5e3054f2f76f96
   StripeApplePay: 637b45f59b43cb596932294bc1811543cbd7bfc4
   StripeCameraCore: a438bafc9bda40edb956f935d481717103fa7feb
   StripeCore: f872db348b65c2ab4abd24b330fcd8dc2a279f27
@@ -112,6 +117,6 @@ SPEC CHECKSUMS:
   StripePaymentsUI: 4e4f5c5af8653df94795af6414829628e8178afc
   StripeUICore: 2d07f596393a9f35d60b2bc54942a495546417a5
 
-PODFILE CHECKSUM: 1c7e516d7e510b5a1d8fb0d599a3d1ffe4104a72
+PODFILE CHECKSUM: 0a6ec343fd5d3b0e156b8d312dc07c1bcaa8f2e4
 
 COCOAPODS: 1.12.1

@@ -3,7 +3,7 @@
     <ion-title class="ion-text-center title" color="light">
       NIFTY50 STOCKS
     </ion-title>
-    <!-- <ion-button (click)="viewNotifications()" fill="clear" slot="end">
+    <!-- <ion-button (click)="showRatingPrompt()" fill="clear" slot="end">
       <ion-icon slot="icon-only" name="chatbubble-ellipses" color="light"></ion-icon>
     </ion-button> -->
   </ion-toolbar>
@@ -291,7 +291,7 @@
     </ion-item>
   </ion-list>
   <ion-list *ngIf="isLoading">
-   
+  
 
     <ion-item class="item-stock" lines="none" >
       <ion-label >

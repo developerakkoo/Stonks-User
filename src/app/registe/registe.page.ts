@@ -18,6 +18,8 @@ export class RegistePage implements OnInit {
   token:any;
   loginForm!: FormGroup;
   isRegistered: boolean = false;
+
+  
   constructor(private formBuilder: FormBuilder,
               private http: HttpClient,
               private sound: SoundService,

@@ -42,7 +42,7 @@ export class FcmServiceService {
 });
 
 PushNotifications.addListener('registration', async (token: Token) => {
-  alert('Push registration success, token: ' + token.value);
+  // alert('Push registration success, token: ' + token.value);
   console.log('Push registration success, token: ' + token.value);
   await this.data.set("firebaseToken", token.value);
   this.updateUserToken(token.value);
@@ -89,7 +89,7 @@ PushNotifications.addListener(
       },
       error:(error:any) =>{
         console.log(error);
-        alert(error.message)
+        // alert(error.message)
         
       }
     })

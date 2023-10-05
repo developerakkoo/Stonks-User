@@ -8,14 +8,26 @@
 
 <ion-content>
   
-  <ion-grid *ngIf="isNoCallToday == true">
+  <ion-grid>
+    <ion-row>
+      <ion-col size="12" *ngIf="isBlocked">
+        <ion-text class="ion-text-center" color="primary">
+          <img src="/assets/realx.svg" alt="" srcset="">
+          <h3>Your Subscription Has Ended!</h3>
+          <h6>Please recharge to Continue using our services!</h6>
+        </ion-text>
+      </ion-col>
+     
+    </ion-row>
+  </ion-grid>
+
+  <ion-grid *ngIf="isNoCallToday == true && isBlocked == false" >
     <ion-row>
       <ion-col size="6" offset="3">
         <ion-text class="ion-text-center" color="primary">
           <img src="/assets/realx.svg" alt="" srcset="">
           <h3>Sit Back and Relax!</h3>
           <h6>We Strive to provide refined calls Only!</h6>
-
         </ion-text>
       </ion-col>
     </ion-row>
@@ -23,7 +35,7 @@
 
 
 
-  <ion-grid class="ion-margin-start" *ngIf="isNoCallToday == false">
+  <ion-grid class="ion-margin-start" *ngIf="isNoCallToday == false && isBlocked == false">
     <ion-row>
       <ion-col size="12">
   <div class="container">
@@ -68,7 +80,7 @@
          font-family: 'Lato';
           font-style: normal;
           font-weight: 700;
-          font-size: 12px;
+          font-size: 16px;
           line-height: 19px;
          
           
@@ -175,7 +187,7 @@
   
 </ion-content>
 
-<ion-footer  *ngIf="isNoCallToday == true" lines=none>
+<ion-footer  *ngIf="isNoCallToday == true && isBlocked == false" lines=none>
   <ion-toolbar>
     <ion-text color="primary" class="ion-text-center">
       <p> <strong>We will notify you once calls are provided</strong> </p>

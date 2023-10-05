@@ -8,6 +8,35 @@
   "client": [
     {
       "client_info": {
+        "mobilesdk_app_id": "1:760823659531:android:b359a784f019fbd79b5b0e",
+        "android_client_info": {
+          "package_name": "io.stocks.techlapse"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "760823659531-cbuj5gfg3uktuvfrflv8m6jof2r452b7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBqIRT_v1pIJVew5cjnNjl1TWgGU2fqg5w"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "760823659531-cbuj5gfg3uktuvfrflv8m6jof2r452b7.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
         "mobilesdk_app_id": "1:760823659531:android:3848deba72b3a3969b5b0e",
         "android_client_info": {
           "package_name": "io.stoks.techlapse"
