@@ -165,5 +165,7 @@ export class Tab2Page {
                   }
                 })
               }
-
+              goToSubscriptionPage(){
+                this.router.navigate(['subscription']);
+              }
 }

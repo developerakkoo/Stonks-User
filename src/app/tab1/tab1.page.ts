@@ -132,6 +132,7 @@ isBlocked:boolean = false;
     }
     ionViewDidLeave(){
       clearInterval(this.getSocketInteval);
+      clearInterval(this.blockedInterval);
       this.getAllStocksSub.unsubscribe();
       this.getUserProfileSub.unsubscribe();
       this.getUserProfileSub.unsubscribe();
